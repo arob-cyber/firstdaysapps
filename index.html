@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirstDays™ — Baby Feeding & Care Tracker</title>
-    <meta name="description" content="Track every feed, diaper, and growth milestone. Built by an IBCLC with WHO & CDC growth charts, clinical PDF reports, and evidence-based guidance.">
+    <title>FirstDays Apps — Built for the Beginning</title>
+    <meta name="description" content="A suite of apps supporting families and clinicians through pregnancy, birth, and the first years of life.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -12,82 +12,448 @@
             --coral: #F4A88A;
             --coral-dark: #E8956E;
             --green: #8DC99A;
+            --purple: #C8A4D4;
             --cream: #FDF3EA;
             --cream-dark: #F5E8D8;
             --text: #2C1A0E;
             --text-light: #8A7060;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(253, 243, 234, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(244, 168, 138, 0.2); }
-        .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--coral-dark); text-decoration: none; }
-        .nav-back { font-size: 0.9rem; color: var(--text-light); text-decoration: none; transition: color 0.2s; }
-        .nav-back:hover { color: var(--coral-dark); }
-        .hero { padding: 140px 40px 80px; text-align: center; position: relative; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(244, 168, 138, 0.12) 0%, transparent 60%); }
-        .hero-content { position: relative; max-width: 680px; margin: 0 auto; }
-        .hero-badge { display: inline-block; background: rgba(244, 168, 138, 0.15); border: 1px solid rgba(244, 168, 138, 0.4); color: var(--coral-dark); padding: 6px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 6vw, 3.8rem); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(253, 243, 234, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(244, 168, 138, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--coral-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--coral-dark); }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(244, 168, 138, 0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(141, 201, 154, 0.12) 0%, transparent 60%),
+                        radial-gradient(ellipse at 50% 50%, rgba(200, 164, 212, 0.08) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(244, 168, 138, 0.15);
+            border: 1px solid rgba(244, 168, 138, 0.4);
+            color: var(--coral-dark);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
         .hero h1 span { color: var(--coral-dark); }
-        .hero-byline { font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px; font-weight: 400; }
-        .hero p { font-size: 1.05rem; color: var(--text-light); line-height: 1.7; font-weight: 300; margin-bottom: 40px; }
-        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
-        .app-store-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--text); color: white; padding: 14px 28px; border-radius: 14px; text-decoration: none; transition: all 0.2s; }
-        .app-store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44, 26, 14, 0.25); }
-        .store-sub { font-size: 0.7rem; opacity: 0.7; display: block; }
-        .store-main { font-size: 1rem; font-weight: 600; display: block; }
-        .free-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(141, 201, 154, 0.15); border: 1px solid rgba(141, 201, 154, 0.4); color: #4a9a5e; padding: 8px 20px; border-radius: 100px; font-size: 0.88rem; font-weight: 500; }
-        .features { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
-        .section-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
-        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 60px; max-width: 500px; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .feature-card { background: white; border-radius: 20px; padding: 36px 32px; border: 1px solid rgba(244, 168, 138, 0.1); transition: transform 0.2s; }
-        .feature-card:hover { transform: translateY(-4px); }
-        .feature-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-        .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
-        .feature-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; font-weight: 300; }
-        .feature-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 14px; }
-        .feature-tag.free { background: rgba(141,201,154,0.15); color: #4a9a5e; }
-        .feature-tag.premium { background: rgba(244,168,138,0.15); color: var(--coral-dark); }
-        .pricing-section { padding: 100px 40px; background: white; }
-        .pricing-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; text-align: left; }
-        .pricing-card { border-radius: 20px; padding: 40px 36px; }
-        .pricing-card.free-card { background: var(--cream); border: 1.5px solid rgba(244, 168, 138, 0.15); }
-        .pricing-card.premium-card { background: var(--text); color: white; }
-        .pricing-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
-        .pricing-card.premium-card h3 { color: white; }
-        .price-amount { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; margin: 16px 0 4px; }
-        .price-note { font-size: 0.82rem; color: var(--text-light); margin-bottom: 28px; }
-        .pricing-card.premium-card .price-note { color: rgba(255,255,255,0.5); }
-        .pricing-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-        .pricing-list li { font-size: 0.88rem; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-        .pricing-list li .check { flex-shrink: 0; font-weight: 700; }
-        .free-card .pricing-list li { color: var(--text-light); }
-        .free-card .pricing-list li .check { color: var(--green); }
-        .premium-card .pricing-list li { color: rgba(255,255,255,0.8); }
-        .premium-card .pricing-list li .check { color: var(--coral); }
-        .btn-download { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; border-radius: 12px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.2s; width: 100%; }
-        .btn-download.dark { background: var(--text); color: white; }
-        .btn-download.light { background: white; color: var(--text); }
-        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(44,26,14,0.15); }
-        .ibclc-callout { background: var(--text); color: white; padding: 80px 40px; text-align: center; }
-        .ibclc-callout h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 16px; }
-        .ibclc-callout p { font-size: 1rem; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; max-width: 540px; margin: 0 auto 32px; }
-        .btn-outline { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid rgba(255,255,255,0.4); color: white; padding: 12px 24px; border-radius: 100px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
-        .btn-outline:hover { border-color: var(--coral); background: rgba(244,168,138,0.1); }
-        footer { background: var(--cream-dark); padding: 48px 40px 32px; }
-        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .footer-inner p { font-size: 0.82rem; color: var(--text-light); }
-        .footer-inner a { color: var(--coral-dark); text-decoration: none; }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--coral);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244, 168, 138, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1.5px solid rgba(44, 26, 14, 0.2);
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--coral);
+            color: var(--coral-dark);
+        }
+
+        /* APPS SECTION */
+        .apps-section {
+            padding: 100px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 60px;
+            max-width: 500px;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 36px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            border: 1px solid rgba(244, 168, 138, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .app-card.coral::before { background: var(--coral); }
+        .app-card.green::before { background: var(--green); }
+        .app-card.purple::before { background: var(--purple); }
+        .app-card.coming-soon { opacity: 0.7; cursor: default; }
+        .app-card.green.coming-soon { opacity: 0.85; }
+
+        .app-card:hover:not(.coming-soon) {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(44, 26, 14, 0.1);
+        }
+
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .app-icon.coral { background: rgba(244, 168, 138, 0.15); }
+        .app-icon.green { background: rgba(141, 201, 154, 0.15); }
+        .app-icon.purple { background: rgba(200, 164, 212, 0.15); }
+
+        .app-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 100px;
+            margin-bottom: 12px;
+        }
+
+        .app-badge.available { background: rgba(141, 201, 154, 0.2); color: #4a9a5e; }
+        .app-badge.soon { background: rgba(200, 164, 212, 0.2); color: #9a6aaa; }
+
+        .app-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .app-card p {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.65;
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .app-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .app-features li {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-features li::before {
+            content: '✓';
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .app-card.coral .app-features li::before { color: var(--coral); }
+        .app-card.green .app-features li::before { color: var(--green); }
+        .app-card.purple .app-features li::before { color: var(--purple); }
+
+        .app-link {
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .app-card.coral .app-link { color: var(--coral-dark); }
+        .app-card.green .app-link { color: #4a9a5e; }
+
+        /* ABOUT */
+        .about-section {
+            background: var(--text);
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .about-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .about-section .section-label { color: var(--coral); }
+
+        .about-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-section p {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .about-credentials {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .credential {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 400;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--cream-dark);
+            padding: 60px 40px 40px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .nav-logo {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            max-width: 260px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .footer-links h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--coral-dark); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(44, 26, 14, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content { animation: fadeUp 0.8s ease forwards; }
+        .app-card { animation: fadeUp 0.6s ease forwards; }
+        .app-card:nth-child(2) { animation-delay: 0.1s; }
+        .app-card:nth-child(3) { animation-delay: 0.2s; }
+
         @media (max-width: 768px) {
             nav { padding: 16px 24px; }
+            .nav-links { display: none; }
             .hero { padding: 100px 24px 60px; }
-            .features { padding: 60px 24px; }
-            .pricing-section { padding: 60px 24px; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .ibclc-callout { padding: 60px 24px; }
-            footer { padding: 32px 24px; }
+            .apps-section { padding: 60px 24px; }
+            .about-section { padding: 60px 24px; }
+            footer { padding: 48px 24px 32px; }
+            .footer-top { flex-direction: column; }
         }
     </style>
 </head>
@@ -95,167 +461,136 @@
 
     <nav>
         <a href="/" class="nav-logo">FirstDays</a>
-        <a href="/" class="nav-back">← All Apps</a>
+        <ul class="nav-links">
+            <li><a href="/firstdaysapps/#apps">Our Apps</a></li>
+            <li><a href="/firstdaysapps/#about">About</a></li>
+            <li><a href="/firstdaysapps/privacy.html">Privacy</a></li>
+            <li><a href="/firstdaysapps/support.html">Support</a></li>
+        </ul>
     </nav>
 
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-badge">🌱 For New Parents</div>
-            <h1>Your baby's <span>first days</span>, beautifully tracked</h1>
-            <p class="hero-byline">By Ashley Robinson, DrPH, IBCLC</p>
-            <p>Log every feed, diaper, and milestone with confidence. Built by a lactation consultant who knows exactly what new parents need — and what pediatricians want to see.</p>
-            <div class="hero-buttons">
-                <a href="https://apps.apple.com/us/app/firstdays/id6760713389" class="app-store-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    <div>
-                        <span class="store-sub">Download free on the</span>
-                        <span class="store-main">App Store</span>
-                    </div>
-                </a>
-                <div class="free-badge">✓ Free to download</div>
+            <div class="hero-badge">A suite of apps for new families</div>
+            <h1>Built for the <span>beginning</span> of everything</h1>
+            <p>FirstDays is a collection of apps supporting families and clinicians through pregnancy, birth, and the first years of life — created by an IBCLC who has been there.</p>
+            <div class="hero-cta">
+                <a href="/firstdaysapps/#apps" class="btn-primary">Explore Our Apps ↓</a>
+                <a href="/firstdaysapps/support.html" class="btn-secondary">Get Support</a>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="section-label">Features</div>
-        <h2 class="section-title">Everything new parents need to feel confident</h2>
+    <section class="apps-section" id="apps">
+        <div class="section-label">Our Apps</div>
+        <h2 class="section-title">Tools for every stage of the journey</h2>
 
-        <div class="features-grid">
+        <div class="apps-grid">
 
-            <div class="feature-card">
-                <span class="feature-tag free">Free</span>
-                <span class="feature-icon">🤱</span>
-                <h3>Breastfeeding Tracker</h3>
-                <p>Independent left and right breast timers that track simultaneously. The app remembers which side you fed from last and tells you which side to start on — even at 3am.</p>
-            </div>
+            <!-- FirstDays Parent App -->
+            <a href="/firstdaysapps/parent/index.html" class="app-card coral">
+                <div class="app-icon coral">🌱</div>
+                <span class="app-badge available">Available Now</span>
+                <h3>FirstDays</h3>
+                <p>The baby tracking app for new parents. Log feedings, diapers, sleep, and growth — all in one beautiful place.</p>
+                <ul class="app-features">
+                    <li>Breastfeeding with L/R timers</li>
+                    <li>Bottle, formula & diaper logging</li>
+                    <li>WHO & CDC growth charts</li>
+                    <li>Clinical PDF reports for your IBCLC</li>
+                </ul>
+                <span class="app-link">Learn more →</span>
+            </a>
 
-            <div class="feature-card">
-                <span class="feature-tag free">Free</span>
-                <span class="feature-icon">🍼</span>
-                <h3>Bottle & Formula Log</h3>
-                <p>Track breast milk, formula, or mixed feeds by volume in oz or mL. Switch between imperial and metric at any time.</p>
-            </div>
+            <!-- FirstDays Growth -->
+            <a href="/firstdaysapps/growth/index.html" class="app-card green coming-soon">
+                <div class="app-icon green">📈</div>
+                <span class="app-badge soon">Coming Soon</span>
+                <h3>FirstDays Growth</h3>
+                <p>The clinical growth tracking tool built exclusively for IBCLCs. Plot weights on WHO charts, calculate milk transfer, and export clinical PDFs.</p>
+                <ul class="app-features">
+                    <li>WHO weight-for-age growth charts</li>
+                    <li>% Weight loss calculator</li>
+                    <li>Milk transfer calculator</li>
+                    <li>PDF clinical export</li>
+                </ul>
+                <span class="app-link" style="color: #4a9a5e;">Coming soon to the App Store</span>
+            </a>
 
-            <div class="feature-card">
-                <span class="feature-tag free">Free</span>
-                <span class="feature-icon">💧</span>
-                <h3>Diaper Tracking with AAP Milestones</h3>
-                <p>Log wet and dirty diapers and receive a celebration alert when your baby hits the AAP daily minimum of 6 wet diapers — one of the most important signs they're getting enough milk.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-tag free">Free</span>
-                <span class="feature-icon">🔔</span>
-                <h3>Smart Reminders</h3>
-                <p>Custom feeding reminder intervals that automatically reset after every logged feed. Diaper reminders every 6 hours so nothing slips through.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-tag free">Free</span>
-                <span class="feature-icon">📱</span>
-                <h3>Home Screen Widget</h3>
-                <p>See your baby's last feed time, last diaper, and today's feed count at a glance — without opening the app.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-tag free">Free</span>
-                <span class="feature-icon">📚</span>
-                <h3>Evidence-Based Guidance</h3>
-                <p>Flange sizing guides, pump setup instructions, and links to Academy of Breastfeeding Medicine protocols and AAP guidelines — all free, built right in.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-tag premium">Full Access</span>
-                <span class="feature-icon">🥛</span>
-                <h3>Pumping Log & Tracker</h3>
-                <p>Track pumping sessions by volume and duration with a live timer. Step-by-step setup guides for 11 major breast pump brands included.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-tag premium">Full Access</span>
-                <span class="feature-icon">📈</span>
-                <h3>WHO & CDC Growth Charts</h3>
-                <p>Plot your baby's weight against WHO percentile curves (recommended for breastfed infants) or CDC curves (formula-fed infants) — the same charts your pediatrician uses. See the trend, not just a number.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-tag premium">Full Access</span>
-                <span class="feature-icon">📄</span>
-                <h3>Clinical PDF Reports</h3>
-                <p>Generate a professional day-by-day summary of feeding and diaper history formatted for your IBCLC or pediatrician. Share via email, AirDrop, or messages directly from the app.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-tag premium">Full Access</span>
-                <span class="feature-icon">☁️</span>
-                <h3>Full History & iCloud Backup</h3>
-                <p>All your data is automatically backed up to iCloud so nothing is lost if you get a new phone. Access your complete feeding and diaper history any time.</p>
+            <!-- Future App -->
+            <div class="app-card purple coming-soon">
+                <div class="app-icon purple">🤰</div>
+                <span class="app-badge soon">Coming Soon</span>
+                <h3>FirstDays Pregnancy</h3>
+                <p>A companion for expectant families — from the first trimester through birth and into infancy. Evidence-based guidance every step of the way.</p>
+                <ul class="app-features">
+                    <li>Week-by-week pregnancy guide</li>
+                    <li>Birth plan builder</li>
+                    <li>Symptom tracking</li>
+                    <li>Postpartum preparation</li>
+                </ul>
+                <span class="app-link" style="color: var(--purple);">Notify me when available</span>
             </div>
 
         </div>
     </section>
 
-    <section class="pricing-section">
-        <div class="pricing-inner">
-            <div class="section-label">Pricing</div>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 12px;">Free to start. One-time to unlock everything.</h2>
-            <p style="color: var(--text-light); font-size: 0.95rem; font-weight: 300; max-width: 480px; margin: 0 auto;">No subscription. No monthly fees. Pay once and own it forever.</p>
-
-            <div class="pricing-grid">
-                <div class="pricing-card free-card">
-                    <h3>Free</h3>
-                    <div class="price-amount">$0</div>
-                    <p class="price-note">Forever free · No credit card needed</p>
-                    <ul class="pricing-list">
-                        <li><span class="check">✓</span> Unlimited breastfeed logging</li>
-                        <li><span class="check">✓</span> Unlimited diaper logging</li>
-                        <li><span class="check">✓</span> Smart feeding & diaper reminders</li>
-                        <li><span class="check">✓</span> Home screen widget</li>
-                        <li><span class="check">✓</span> Pump guides for 11 brands</li>
-                        <li><span class="check">✓</span> Flange sizing guidance</li>
-                        <li><span class="check">✓</span> ABM & AAP evidence-based advice</li>
-                    </ul>
-                    <a href="https://apps.apple.com/us/app/firstdays/id6760713389" class="btn-download dark">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        Download Free
-                    </a>
-                </div>
-
-                <div class="pricing-card premium-card">
-                    <h3>Full Access</h3>
-                    <div class="price-amount" style="color: var(--coral);">$4.99</div>
-                    <p class="price-note">One-time purchase · No subscription ever</p>
-                    <ul class="pricing-list">
-                        <li><span class="check">✓</span> Everything in Free</li>
-                        <li><span class="check">✓</span> WHO & CDC growth charts</li>
-                        <li><span class="check">✓</span> Clinical PDF reports</li>
-                        <li><span class="check">✓</span> Full feeding & diaper history</li>
-                        <li><span class="check">✓</span> Pumping log with live timer</li>
-                        <li><span class="check">✓</span> Weight tracking</li>
-                        <li><span class="check">✓</span> iCloud backup</li>
-                        <li><span class="check">✓</span> All future updates included</li>
-                    </ul>
-                    <a href="https://apps.apple.com/us/app/firstdays/id6760713389" class="btn-download light">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="black"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                        Unlock Full Access — $4.99
-                    </a>
-                </div>
+    <section class="about-section" id="about">
+        <div class="about-inner">
+            <div class="section-label">About</div>
+            <h2>Created by a clinician who understands what families need</h2>
+            <p>FirstDays apps are created by Dr. Ashley Robinson, a Doctor of Public Health, International Board Certified Lactation Consultant, and Certified Labor Doula based in New York and Connecticut.</p>
+            <p>Every app in the FirstDays suite is built from real clinical experience — designed to close the gap between what families need and what technology currently offers them.</p>
+            <div class="about-credentials">
+                <span class="credential">DrPH · Epidemiology</span>
+                <span class="credential">IBCLC</span>
+                <span class="credential">Certified Labor Doula</span>
+                <span class="credential">7+ Years Private Practice</span>
             </div>
         </div>
-    </section>
-
-    <section class="ibclc-callout">
-        <h2>Recommended by IBCLCs</h2>
-        <p>FirstDays was built by a lactation consultant who knows exactly what clinical data matters most. If your IBCLC recommended this app, you're already in good hands.</p>
-        <a href="../growth/index.html" class="btn-outline">Are you an IBCLC? See FirstDays Growth →</a>
     </section>
 
     <footer>
         <div class="footer-inner">
-            <p>© 2026 FirstDays Apps · <a href="/">Home</a> · <a href="../privacy.html#firstdays">Privacy Policy</a> · <a href="../support.html">Support</a></p>
-            <p>Made with love for new families</p>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="nav-logo">FirstDays</a>
+                    <p>A suite of apps supporting families and clinicians through the earliest days of life.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Apps</h4>
+                    <ul>
+                        <li><a href="/firstdaysapps/parent/index.html">FirstDays</a></li>
+                        <li><a href="/firstdaysapps/growth/index.html">FirstDays Growth</a></li>
+                        <li><a href="#">FirstDays Pregnancy (Coming Soon)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/firstdaysapps/privacy.html">Privacy Policy</a></li>
+                        <li><a href="privacy.html#firstdays">FirstDays Privacy</a></li>
+                        <li><a href="privacy.html#growth">FirstDays Growth Privacy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="/firstdaysapps/support.html">Support</a></li>
+                        <li><a href="mailto:firstdaysapps@gmail.com">firstdaysapps@gmail.com</a></li>
+                        <li><a href="https://ashleyrobinsonibclc.com" target="_blank">ashleyrobinsonibclc.com</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 FirstDays Apps. All rights reserved.</p>
+                <p>Made with care for new families everywhere.</p>
+            </div>
         </div>
     </footer>
 
