@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirstDays Growth — Clinical Growth Tracking for IBCLCs</title>
+    <meta name="description" content="The clinical weight tracking and growth chart tool built exclusively for IBCLCs. Plot weights on WHO charts, calculate milk transfer, and export clinical PDFs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #F4A88A;
+            --coral-dark: #E8956E;
+            --green: #8DC99A;
+            --green-dark: #5aaa6e;
+            --purple: #C8A4D4;
+            --cream: #FDF3EA;
+            --cream-dark: #F5E8D8;
+            --text: #2C1A0E;
+            --text-light: #8A7060;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(253, 243, 234, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(244, 168, 138, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--coral-dark);
+            text-decoration: none;
+        }
+
+        .nav-back {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover { color: var(--coral-dark); }
+
+        /* HERO */
+        .hero {
+            padding: 140px 40px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(141, 201, 154, 0.12) 0%, transparent 60%);
+        }
+
+        .hero-content { position: relative; max-width: 680px; margin: 0 auto; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(141, 201, 154, 0.15);
+            border: 1px solid rgba(141, 201, 154, 0.4);
+            color: var(--green-dark);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span { color: var(--green-dark); }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .app-store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--text);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .app-store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(44, 26, 14, 0.25);
+        }
+
+        .app-store-btn .store-text { text-align: left; }
+        .app-store-btn .store-sub { font-size: 0.7rem; opacity: 0.7; display: block; }
+        .app-store-btn .store-main { font-size: 1rem; font-weight: 600; display: block; }
+
+        /* FEATURES */
+        .features {
+            padding: 100px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 60px;
+            max-width: 500px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 36px 32px;
+            border: 1px solid rgba(141, 201, 154, 0.15);
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover { transform: translateY(-4px); }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* FOR IBCLCS */
+        .ibclc-section {
+            background: var(--text);
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .ibclc-inner { max-width: 680px; margin: 0 auto; }
+
+        .ibclc-section .section-label { color: var(--green); }
+
+        .ibclc-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .ibclc-section p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .ibclc-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .ibclc-point {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 20px 24px;
+        }
+
+        .ibclc-point h4 {
+            font-size: 0.92rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--green);
+        }
+
+        .ibclc-point p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* PRICING */
+        .pricing {
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .pricing-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 48px 40px;
+            border: 2px solid rgba(141, 201, 154, 0.3);
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 20px 0 8px;
+        }
+
+        .price span { font-size: 1.5rem; vertical-align: top; margin-top: 12px; display: inline-block; }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 36px;
+        }
+
+        .pricing-features li {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(244,168,138,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--green-dark);
+            font-weight: 700;
+        }
+
+        .pricing-features li:last-child { border-bottom: none; }
+
+        footer {
+            background: var(--cream-dark);
+            padding: 48px 40px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-inner p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        .footer-inner a {
+            color: var(--coral-dark);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px; }
+            .hero { padding: 100px 24px 60px; }
+            .features { padding: 60px 24px; }
+            .ibclc-section { padding: 60px 24px; }
+            .ibclc-points { grid-template-columns: 1fr; }
+            .pricing { padding: 60px 24px; }
+            footer { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">FirstDays</a>
+        <a href="/" class="nav-back">← All Apps</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge">📈 Coming Soon to the App Store</div>
+            <h1>Clinical growth tracking, <span>finally done right</span></h1>
+            <p>FirstDays Growth gives IBCLCs the tools they actually need — WHO growth charts with pinch-to-zoom, a milk transfer calculator, % weight loss alerts, and professional PDF exports.</p>
+            <a href="mailto:firstdaysapps@gmail.com?subject=Notify me when FirstDays Growth launches" class="app-store-btn" style="background: var(--green-dark);">
+                <span>🔔</span>
+                <div class="store-text">
+                    <span class="store-sub">Notify me when</span>
+                    <span class="store-main">FirstDays Growth launches</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Everything you need in the consult room</h2>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">📈</span>
+                <h3>WHO Growth Charts</h3>
+                <p>Plot weights on official sex-specific WHO weight-for-age charts. Pinch to zoom into any time window — see just the first week if that's where your data is.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">⚖️</span>
+                <h3>% Weight Loss Calculator</h3>
+                <p>Instantly calculate percent weight loss from birth weight. Color-coded alerts at the 7% and 10% clinical thresholds, with day-by-day expected weight ranges.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🍼</span>
+                <h3>Milk Transfer Calculator</h3>
+                <p>Enter pre and post-feed weights in grams. Instantly see transfer in grams, oz, and mL. Log weighted feeds against individual patients.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📄</span>
+                <h3>PDF Clinical Export</h3>
+                <p>Generate a professional one-page clinical summary per patient — including the growth chart, full weight history, % weight loss, and weighted feed log. Share directly to your EHR.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔒</span>
+                <h3>Privacy First</h3>
+                <p>Patients are identified by MRN only — no names stored. All data stays privately on your device. Built with HIPAA-conscious workflows in mind.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3>iPhone & iPad</h3>
+                <p>Optimized for both iPhone and iPad. Data syncs privately across your own devices via iCloud so you're always working with the latest information.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ibclc-section">
+        <div class="ibclc-inner">
+            <div class="section-label">Built for IBCLCs</div>
+            <h2>The tool your patients wish you had</h2>
+            <p>FirstDays Growth was built by an IBCLC who knows exactly what the consult room requires — and what existing tools fail to provide.</p>
+
+            <div class="ibclc-points">
+                <div class="ibclc-point">
+                    <h4>MRN-based tracking</h4>
+                    <p>Use your EHR's MRN as the patient identifier. No duplicate records, no extra data entry.</p>
+                </div>
+                <div class="ibclc-point">
+                    <h4>Zoomable charts</h4>
+                    <p>Finally zoom into week one on a growth chart. No more squinting at tiny data points.</p>
+                </div>
+                <div class="ibclc-point">
+                    <h4>Instant calculations</h4>
+                    <p>Weight loss % and milk transfer calculate as you type. No manual math mid-consult.</p>
+                </div>
+                <div class="ibclc-point">
+                    <h4>EHR-ready PDFs</h4>
+                    <p>Export a professional report and attach it directly to your patient's chart.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="section-label">Pricing</div>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 40px;">Simple, one-time pricing</h2>
+
+        <div class="pricing-card">
+            <div class="section-label" style="color: var(--green-dark);">FirstDays Growth</div>
+            <div class="price"><span>$</span>4.99</div>
+            <p class="price-note">One-time purchase · No subscription</p>
+
+            <ul class="pricing-features">
+                <li>Unlimited patients</li>
+                <li>WHO growth charts (boy & girl)</li>
+                <li>Pinch-to-zoom chart view</li>
+                <li>% Weight loss calculator</li>
+                <li>Milk transfer calculator</li>
+                <li>PDF clinical export</li>
+                <li>iPhone & iPad</li>
+                <li>All future updates included</li>
+            </ul>
+
+            <a href="mailto:firstdaysapps@gmail.com?subject=Notify me when FirstDays Growth launches" class="app-store-btn" style="width: 100%; justify-content: center; background: var(--green-dark);">
+                🔔 Notify Me When Available
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <p>© 2026 FirstDays Apps · <a href="/">Home</a> · <a href="../privacy.html#growth">Privacy Policy</a> · <a href="../support.html">Support</a></p>
+            <p>Made by an IBCLC, for IBCLCs</p>
+        </div>
+    </footer>
+
+</body>
+</html>

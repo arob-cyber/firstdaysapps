@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — FirstDays Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #F4A88A;
+            --coral-dark: #E8956E;
+            --green: #8DC99A;
+            --cream: #FDF3EA;
+            --cream-dark: #F5E8D8;
+            --text: #2C1A0E;
+            --text-light: #8A7060;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(253, 243, 234, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(244, 168, 138, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--coral-dark);
+            text-decoration: none;
+        }
+
+        .nav-back {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover { color: var(--coral-dark); }
+
+        .page-header {
+            padding: 140px 40px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(244,168,138,0.08) 0%, transparent 100%);
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+        }
+
+        .app-section {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(244, 168, 138, 0.1);
+        }
+
+        .app-section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(244, 168, 138, 0.15);
+        }
+
+        .app-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .app-dot.coral { background: var(--coral); }
+        .app-dot.green { background: var(--green); }
+
+        .app-section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .app-section-header span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            display: block;
+            margin-top: 2px;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--coral-dark);
+            margin: 28px 0 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.82rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            margin: 0 0 16px 20px;
+        }
+
+        ul li {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 6px;
+        }
+
+        .updated {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-bottom: 48px;
+        }
+
+        .contact-box {
+            background: rgba(244, 168, 138, 0.08);
+            border: 1px solid rgba(244, 168, 138, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            text-transform: none;
+            letter-spacing: 0;
+            margin-top: 0;
+        }
+
+        .contact-box a {
+            color: var(--coral-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            background: var(--cream-dark);
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        footer a {
+            color: var(--coral-dark);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px; }
+            .page-header { padding: 100px 24px 40px; }
+            .content { padding: 40px 24px 80px; }
+            .app-section { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">FirstDays</a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="page-header">
+        <h1>Privacy Policy</h1>
+        <p>How we handle your data across all FirstDays apps</p>
+    </div>
+
+    <div class="content">
+        <p class="updated">Last updated: April 2026</p>
+
+        <!-- FirstDays Parent App -->
+        <div class="app-section" id="firstdays">
+            <div class="app-section-header">
+                <div class="app-dot coral"></div>
+                <div>
+                    <h2>FirstDays</h2>
+                    <span>Baby tracking app for parents</span>
+                </div>
+            </div>
+
+            <h3>Overview</h3>
+            <p>FirstDays is designed to help parents track their newborn's feedings, diapers, sleep, and growth. We take your family's privacy seriously.</p>
+
+            <h3>Data We Collect</h3>
+            <p>FirstDays stores all data locally on your device and, if enabled, privately in your personal iCloud account. We do not collect, transmit, or have access to any personal information you enter into the app.</p>
+            <p>Data stored in the app may include:</p>
+            <ul>
+                <li>Baby feeding logs (type, duration, amount)</li>
+                <li>Diaper and sleep records</li>
+                <li>Weight measurements</li>
+                <li>Pump output data</li>
+            </ul>
+
+            <h3>iCloud Sync</h3>
+            <p>If you use iCloud sync, your data is stored in your personal private iCloud container. This data is only accessible to you and is not shared with us or any third party.</p>
+
+            <h3>Analytics & Advertising</h3>
+            <p>FirstDays does not use any third-party analytics, advertising SDKs, or tracking tools. We do not sell your data. We do not serve ads.</p>
+
+            <h3>Children's Privacy</h3>
+            <p>FirstDays is designed for use by parents and caregivers. While the app tracks data about infants, it is operated by adults. We do not knowingly collect data from children under 13.</p>
+
+            <h3>Data Deletion</h3>
+            <p>You can delete all your data at any time by deleting the app from your device. If iCloud sync is enabled, you can also delete the associated iCloud data from your device's iCloud settings.</p>
+        </div>
+
+        <!-- FirstDays Growth -->
+        <div class="app-section" id="growth">
+            <div class="app-section-header">
+                <div class="app-dot green"></div>
+                <div>
+                    <h2>FirstDays Growth</h2>
+                    <span>Clinical tool for IBCLCs</span>
+                </div>
+            </div>
+
+            <h3>Overview</h3>
+            <p>FirstDays Growth is a clinical reference tool designed for International Board Certified Lactation Consultants. It is built with privacy as a core principle.</p>
+
+            <h3>Data We Collect</h3>
+            <p>FirstDays Growth does not collect, transmit, or share any personal data. All patient data entered into the app is stored locally on the clinician's device.</p>
+            <p>The app is designed to store only de-identified clinical data:</p>
+            <ul>
+                <li>Medical Record Numbers (MRNs) from the clinician's own EHR system</li>
+                <li>Date of birth</li>
+                <li>Sex</li>
+                <li>Weight measurements</li>
+                <li>Milk transfer measurements</li>
+            </ul>
+
+            <h3>Privacy by Design</h3>
+            <p>No patient names are stored. MRNs are only meaningful within the context of the clinician's own separate EHR system. The app is intentionally designed to minimize the amount of identifying information stored.</p>
+
+            <h3>HIPAA Considerations</h3>
+            <p>FirstDays Growth is a clinical reference tool intended for use by licensed healthcare providers. It is the responsibility of the clinician to use the app in compliance with applicable privacy laws and regulations including HIPAA. The app stores only limited data fields and is designed with HIPAA-conscious workflows in mind.</p>
+
+            <h3>iCloud Sync</h3>
+            <p>Future versions of FirstDays Growth may include iCloud sync to allow clinicians to access data across their own personal devices. Any synced data would remain private to the individual clinician's iCloud account and would not be accessible to us or any third party.</p>
+
+            <h3>Analytics & Advertising</h3>
+            <p>FirstDays Growth does not use any third-party analytics, advertising SDKs, or tracking tools. We do not sell data. We do not serve ads.</p>
+
+            <h3>PDF Export</h3>
+            <p>PDF reports generated by the app are created locally on your device. We have no access to these reports. It is the clinician's responsibility to handle exported PDFs in accordance with applicable privacy regulations.</p>
+
+            <h3>Data Deletion</h3>
+            <p>All patient data can be deleted directly within the app. Deleting the app from your device will remove all locally stored data.</p>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-box">
+            <h3>Questions about privacy?</h3>
+            <p style="margin-top: 12px;">If you have any questions about this privacy policy or how your data is handled, please contact us at <a href="mailto:firstdaysapps@gmail.com">firstdaysapps@gmail.com</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 FirstDays Apps · <a href="/">Home</a> · <a href="support.html">Support</a></p>
+    </footer>
+
+</body>
+</html>

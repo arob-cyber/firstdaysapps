@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — FirstDays Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #F4A88A;
+            --coral-dark: #E8956E;
+            --green: #8DC99A;
+            --cream: #FDF3EA;
+            --cream-dark: #F5E8D8;
+            --text: #2C1A0E;
+            --text-light: #8A7060;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+        }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(253, 243, 234, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(244, 168, 138, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--coral-dark);
+            text-decoration: none;
+        }
+
+        .nav-back {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover { color: var(--coral-dark); }
+
+        .page-header {
+            padding: 140px 40px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(244,168,138,0.08) 0%, transparent 100%);
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 40px 100px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(244, 168, 138, 0.1);
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 24px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--coral);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244, 168, 138, 0.4);
+        }
+
+        .faq-section {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            border: 1px solid rgba(244, 168, 138, 0.1);
+        }
+
+        .faq-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .faq-item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(244, 168, 138, 0.1);
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .app-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .app-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .app-tag.coral { background: rgba(244,168,138,0.15); color: var(--coral-dark); }
+        .app-tag.green { background: rgba(141,201,154,0.15); color: #4a9a5e; }
+
+        footer {
+            background: var(--cream-dark);
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: var(--coral-dark);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px; }
+            .page-header { padding: 100px 24px 40px; }
+            .content { padding: 40px 24px 80px; }
+            .contact-card, .faq-section { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">FirstDays</a>
+        <a href="/" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <div class="page-header">
+        <h1>Support</h1>
+        <p>We're here to help. Reach out any time and we'll get back to you as soon as possible.</p>
+    </div>
+
+    <div class="content">
+
+        <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <h2>Get in Touch</h2>
+            <p>Have a question, found a bug, or want to share feedback? Send us an email and we'll respond within 1-2 business days.</p>
+            <a href="mailto:firstdaysapps@gmail.com" class="btn-primary">
+                Email Us → firstdaysapps@gmail.com
+            </a>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="app-tags">
+                    <span class="app-tag coral">FirstDays</span>
+                    <span class="app-tag green">FirstDays Growth</span>
+                </div>
+                <h3>Is my data private?</h3>
+                <p>Yes — all data is stored locally on your device. We do not collect, transmit, or have access to any information you enter into any FirstDays app. See our full Privacy Policy for details.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="app-tags">
+                    <span class="app-tag green">FirstDays Growth</span>
+                </div>
+                <h3>Is FirstDays Growth HIPAA compliant?</h3>
+                <p>FirstDays Growth is a clinical reference tool designed with HIPAA-conscious workflows in mind. No patient names are stored — only MRNs from your own EHR system, date of birth, sex, and weight data. It is the clinician's responsibility to use the app in compliance with applicable regulations.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="app-tags">
+                    <span class="app-tag coral">FirstDays</span>
+                </div>
+                <h3>How do I track a breastfeeding session?</h3>
+                <p>Tap the Breastfeed button on the home screen, select which side you're starting on, and tap Start. The timer will run automatically. Tap the other side button to switch, and tap Stop when the session ends.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="app-tags">
+                    <span class="app-tag green">FirstDays Growth</span>
+                </div>
+                <h3>How do I export a PDF for a patient?</h3>
+                <p>Open the patient's detail screen, tap the Export PDF button, wait for the PDF to generate, then tap Share to send it via email, AirDrop, or save it to Files.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="app-tags">
+                    <span class="app-tag green">FirstDays Growth</span>
+                </div>
+                <h3>How do I zoom in on the growth chart?</h3>
+                <p>Open the growth chart for a patient and use a pinch gesture to zoom in on any section. Drag to pan. Double-tap anywhere on the chart to reset to the full view.</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="app-tags">
+                    <span class="app-tag coral">FirstDays</span>
+                    <span class="app-tag green">FirstDays Growth</span>
+                </div>
+                <h3>I found a bug — how do I report it?</h3>
+                <p>Please email us at firstdaysapps@gmail.com with a description of what happened, which app you were using, and your device model and iOS version. Screenshots are always helpful!</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="app-tags">
+                    <span class="app-tag coral">FirstDays</span>
+                    <span class="app-tag green">FirstDays Growth</span>
+                </div>
+                <h3>How do I delete my data?</h3>
+                <p>You can delete individual entries within the app, or delete the app entirely to remove all locally stored data. If iCloud sync is enabled, you can remove the iCloud data from your device's Settings → iCloud → Manage Storage.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 FirstDays Apps · <a href="/">Home</a> · <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+</body>
+</html>
