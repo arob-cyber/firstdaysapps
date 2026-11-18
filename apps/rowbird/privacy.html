@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RowBird Privacy Policy — FirstDays Apps</title>
+    <meta name="description" content="Privacy policy for RowBird: Knitting Charts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --coral:#F4A88A; --coral-dark:#E8956E; --green:#8DC99A; --purple:#C8A4D4; --cream:#FDF3EA; --cream-dark:#F5E8D8; --text:#2C1A0E; --text-light:#8A7060; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); }
+        nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:20px 40px; display:flex; align-items:center; justify-content:space-between; background:rgba(253,243,234,0.95); backdrop-filter:blur(12px); border-bottom:1px solid rgba(244,168,138,0.2); }
+        .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--coral-dark); text-decoration:none; }
+        .nav-links { display:flex; gap:32px; list-style:none; }
+        .nav-links a, .nav-back { text-decoration:none; color:var(--text-light); font-size:0.9rem; font-weight:500; transition:color .2s; }
+        .nav-links a:hover, .nav-back:hover { color:var(--coral-dark); }
+        .page-header { padding:140px 40px 60px; text-align:center; background:linear-gradient(180deg, rgba(244,168,138,0.08) 0%, transparent 100%); }
+        .page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3rem); font-weight:700; margin-bottom:16px; }
+        .page-header p { color:var(--text-light); font-size:0.95rem; font-weight:300; max-width:540px; margin:0 auto; line-height:1.6; }
+        .badge { display:inline-block; font-size:0.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:100px; margin-bottom:12px; background:rgba(200,164,212,0.2); color:#9a6aaa; }
+        .content { max-width:780px; margin:0 auto; padding:60px 40px 100px; }
+        .wide { max-width:1100px; }
+        .card { background:white; border-radius:20px; padding:48px; margin-bottom:32px; border:1px solid rgba(244,168,138,0.1); }
+        .card h2 { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; margin-bottom:20px; }
+        h3 { font-size:0.82rem; font-weight:600; color:var(--coral-dark); margin:28px 0 12px; text-transform:uppercase; letter-spacing:.05em; }
+        .card > h3:first-child { margin-top:0; }
+        p { font-size:0.95rem; line-height:1.75; color:var(--text-light); font-weight:300; margin-bottom:16px; }
+        ul { margin:0 0 16px 20px; }
+        ul li { font-size:0.95rem; line-height:1.75; color:var(--text-light); font-weight:300; margin-bottom:6px; }
+        a { color:var(--coral-dark); }
+        .updated { text-align:center; font-size:0.82rem; color:var(--text-light); margin-bottom:32px; }
+        .btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:white; padding:14px 28px; border-radius:100px; text-decoration:none; font-weight:500; font-size:0.95rem; transition:all .2s; }
+        .btn-primary:hover { background:var(--coral-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(244,168,138,0.4); }
+        .btn-secondary { color:var(--text); padding:14px 28px; border-radius:100px; text-decoration:none; font-weight:500; font-size:0.95rem; border:1.5px solid rgba(44,26,14,0.2); }
+        .btn-secondary:hover { border-color:var(--coral); color:var(--coral-dark); }
+        .cta { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:28px; }
+        .apps-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; }
+        .app-card { background:white; border-radius:24px; padding:40px 36px; text-decoration:none; color:var(--text); transition:all .3s; border:1px solid rgba(244,168,138,0.1); position:relative; overflow:hidden; display:block; }
+        .app-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--purple); }
+        .app-card:hover { transform:translateY(-6px); box-shadow:0 20px 48px rgba(44,26,14,0.1); }
+        .app-icon { width:64px; height:64px; border-radius:16px; margin-bottom:24px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; background:rgba(200,164,212,0.15); }
+        .app-card h3 { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; margin:0 0 12px; color:var(--text); text-transform:none; letter-spacing:0; }
+        .app-card p { font-size:0.92rem; margin-bottom:20px; }
+        .app-link { font-size:0.88rem; font-weight:500; color:#9a6aaa; }
+        .contact-box { background:rgba(244,168,138,0.08); border:1px solid rgba(244,168,138,0.2); border-radius:16px; padding:32px; text-align:center; }
+        .contact-box h3 { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--text); text-transform:none; letter-spacing:0; margin-top:0; }
+        .contact-box a { text-decoration:none; font-weight:500; }
+        .faq-item { padding:20px 0; border-bottom:1px solid rgba(244,168,138,0.1); }
+        .faq-item:last-child { border-bottom:none; }
+        .faq-item h3 { font-size:1rem; font-weight:600; color:var(--text); text-transform:none; letter-spacing:0; margin:0 0 8px; }
+        .faq-item p { margin-bottom:0; }
+        footer { background:var(--cream-dark); padding:32px 40px; text-align:center; }
+        footer p { font-size:0.82rem; color:var(--text-light); margin:0; }
+        footer a { text-decoration:none; }
+        @media (max-width:768px) { nav{padding:16px 24px;} .nav-links{display:none;} .page-header{padding:100px 24px 40px;} .content{padding:40px 24px 80px;} .card{padding:32px 24px;} }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">FirstDays</a>
+        <a href="/apps/rowbird/index.html" class="nav-back">← RowBird</a>
+    </nav>
+
+    <div class="page-header">
+        <h1>RowBird Privacy Policy</h1>
+        <p>How RowBird handles your information</p>
+    </div>
+    <div class="content">
+        <p class="updated">Last updated: November 2026</p>
+        <div class="card">
+            <h3>Summary</h3>
+            <p>RowBird does not collect, transmit or share any personal information. Your patterns and settings stay on your iPad.</p>
+
+            <h3>Information we collect</h3>
+            <p>None. RowBird has no accounts or sign-in, and it does not collect your name, email address, location, contacts, photos or any other personal information. We do not receive the patterns, charts, yarn or needle details, or other content you create in the app.</p>
+
+            <h3>Where your data is stored</h3>
+            <p>Everything you create in RowBird is stored only on your device. RowBird has no server or backend and does not use iCloud syncing of its own. If you have iCloud Backup turned on for your iPad, Apple may include RowBird's data in your device backup. That is a feature of your device and your Apple account, not something RowBird does, and we do not have access to it.</p>
+
+            <h3>Analytics, advertising and third parties</h3>
+            <p>RowBird does not use analytics, crash reporting, advertising or any third-party services or software development kits. The app does not connect to the internet to send or receive data. We do not sell or share your data.</p>
+
+            <h3>Device permissions</h3>
+            <p>RowBird does not request access to your camera, photos, location, contacts or notifications, and it does not track you.</p>
+
+            <h3>Printing and sharing</h3>
+            <p>If you choose to print a chart or share it as a PDF, RowBird uses the standard iPadOS print dialog and share sheet. You decide where the file goes. Nothing is sent to us. A shared PDF can include your chart, key, colors, and any yarn, needle and gauge details you added, so please consider what you are sharing before you send it.</p>
+
+            <h3>Information from Apple</h3>
+            <p>If you download RowBird from the App Store, Apple may provide us with aggregated, anonymous usage and crash information through App Store Connect, but only from users who have chosen to share that information with app developers in their device settings. This is governed by Apple's policies. It does not identify you, and it is not collected by the app itself.</p>
+
+            <h3>Children's privacy</h3>
+            <p>RowBird does not collect personal information from anyone, including children.</p>
+
+            <h3>Deleting your data</h3>
+            <p>You can delete patterns inside the app. Deleting RowBird from your iPad removes the data it stores on your device. Copies of your device backup are managed through your Apple account settings.</p>
+
+            <h3>Changes to this policy</h3>
+            <p>If this policy changes, we will update this page and the date at the top.</p>
+        </div>
+        <div class="contact-box">
+            <h3>Questions about privacy?</h3>
+            <p style="margin-top:12px;">Contact us at <a href="mailto:firstdaysapps@gmail.com">firstdaysapps@gmail.com</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 FirstDays Apps · <a href="/">Home</a> · <a href="/apps/index.html">Other Apps</a> · <a href="/apps/rowbird/index.html">RowBird</a> · <a href="/apps/rowbird/privacy.html">Privacy</a> · <a href="/apps/rowbird/terms.html">Terms</a> · <a href="/apps/rowbird/support.html">Support</a></p>
+    </footer>
+
+</body>
+</html>
